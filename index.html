@@ -4,7 +4,13 @@
   <meta charset="UTF-8">
   <title>Galería Savage - Cloudinary</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css">
+
+  <!-- Lightbox2 -->
+  <link href="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/css/lightbox.min.css" rel="stylesheet" />
+
   <style>
     body {
       background: #111;
@@ -12,11 +18,16 @@
       font-family: sans-serif;
       padding: 30px;
     }
+    .gallery a {
+      display: block;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 10px #000;
+    }
     .gallery img {
       width: 100%;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      box-shadow: 0 0 10px #000;
+      height: auto;
       transition: transform 0.3s;
     }
     .gallery img:hover {
@@ -30,6 +41,10 @@
     <h1 class="text-center">Galería Savage</h1>
     <div id="gallery" class="row gallery"></div>
   </div>
+
+  <!-- Scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lightbox2@2.11.4/dist/js/lightbox.min.js"></script>
 
   <script>
     const imagenes = [
@@ -52,7 +67,11 @@
     imagenes.forEach(url => {
       const col = document.createElement("div");
       col.className = "col-sm-6 col-md-4";
-      col.innerHTML = `<img src="${url}" alt="">`;
+      col.innerHTML = `
+        <a href="${url}" data-lightbox="galeria">
+          <img src="${url}" alt="">
+        </a>
+      `;
       gallery.appendChild(col);
     });
   </script>
