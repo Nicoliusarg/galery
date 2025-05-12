@@ -48,19 +48,34 @@
     }
 
     .btn-home {
-      background-color: #0d6efd;
+      background-color: #5e3c22;
       color: white;
       font-weight: bold;
       border: none;
       border-radius: 6px;
       padding: 10px 20px;
       text-decoration: none;
+      box-shadow: 0 0 5px #000;
+      transition: background-color 0.3s, transform 0.2s;
     }
 
     .btn-home:hover {
-      background-color: #0846a4;
-      text-decoration: none;
+      background-color: #7b4a28;
       color: white;
+      text-decoration: none;
+      transform: scale(1.05);
+    }
+
+    .progress-badge {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+
+    .progress-badge img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
     }
   </style>
 </head>
@@ -71,16 +86,10 @@
     <a href="https://www.savageoficial.com" class="btn-home">🏠 Home</a>
   </div>
 
-  <!-- Widgets -->
-  <div class="row" style="margin-bottom: 30px;">
-    <div class="col-md-6">
-      <iframe src="https://www.warcraftlogs.com/embed/guild-progress-tile/42?difficulty=5&guild=414105"
-        width="100%" height="250" frameborder="0" style="background-color: #111; border-radius: 10px;"></iframe>
-    </div>
-    <div class="col-md-6">
-      <iframe src="https://www.warcraftlogs.com/embed/guild-progress-tile/42?difficulty=5&guild=414105"
-        width="100%" height="250" frameborder="0" style="background-color: #111; border-radius: 10px;"></iframe>
-    </div>
+  <!-- Progreso Guild Warcraft Logs (imagen dinámica) -->
+  <div class="progress-badge">
+    <img src="https://www.warcraftlogs.com/guilds/progress-badge/414105?difficulty=5&guild=Savage" 
+         alt="Progreso Savage" />
   </div>
 
   <!-- Galería -->
