@@ -1,84 +1,61 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <title>Galería Savage</title>
+  <meta charset="UTF-8">
+  <title>Galería Savage - Cloudinary</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/light-box.css">
-  <link rel="stylesheet" href="css/templatemo-style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css">
+  <style>
+    body {
+      background: #111;
+      color: white;
+      font-family: sans-serif;
+      padding: 30px;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 10px #000;
+      transition: transform 0.3s;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+  </style>
 </head>
-
 <body>
 
-  <div class="full-screen-portfolio" id="portfolio">
-    <div class="container-fluid">
-      <div class="row">
-
-        <!-- Imagen 1 -->
-        <div class="col-md-4 col-sm-6">
-          <div class="portfolio-item">
-            <a href="img/big_portfolio_item_1.png" data-lightbox="galeria">
-              <div class="thumb">
-                <div class="hover-effect">
-                  <div class="hover-content">
-                    <h1>IMAGEN 1</h1>
-                  </div>
-                </div>
-                <div class="image">
-                  <img src="img/portfolio_item_1.png" alt="Imagen 1">
-                </div>
-              </div>
-            </a>
-          </div>
-        </div>
-
-        <!-- Imagen 2 -->
-        <div class="col-md-4 col-sm-6">
-          <div class="portfolio-item">
-            <a href="img/big_portfolio_item_2.png" data-lightbox="galeria">
-              <div class="thumb">
-                <div class="hover-effect">
-                  <div class="hover-content">
-                    <h1>IMAGEN 2</h1>
-                  </div>
-                </div>
-                <div class="image">
-                  <img src="img/portfolio_item_2.png" alt="Imagen 2">
-                </div>
-              </div>
-            </a>
-          </div>
-        </div>
-
-        <!-- Imagen 3 -->
-        <div class="col-md-4 col-sm-6">
-          <div class="portfolio-item">
-            <a href="img/big_portfolio_item_3.png" data-lightbox="galeria">
-              <div class="thumb">
-                <div class="hover-effect">
-                  <div class="hover-content">
-                    <h1>IMAGEN 3</h1>
-                  </div>
-                </div>
-                <div class="image">
-                  <img src="img/portfolio_item_3.png" alt="Imagen 3">
-                </div>
-              </div>
-            </a>
-          </div>
-        </div>
-
-        <!-- Agregá más imágenes copiando desde acá -->
-
-      </div>
-    </div>
+  <div class="container">
+    <h1 class="text-center">Galería Savage</h1>
+    <div id="gallery" class="row gallery"></div>
   </div>
 
-  <!-- Scripts necesarios -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-  <script src="js/vendor/bootstrap.min.js"></script>
-  <script src="js/plugins.js"></script>
-  <script src="js/main.js"></script>
+  <script>
+    const imagenes = [
+      "https://res.cloudinary.com/dvtxa7jeq/image/upload/v1747092913/WoWScrnShot_010424_200548_unkybz.jpg",
+      "https://res.cloudinary.com/dvtxa7jeq/image/upload/v1747092913/Captura_de_pantalla_13-4-2025_231239_diaonline.supermercadosdia.com.ar_fjopxe.jpg",
+      "https://res.cloudinary.com/dvtxa7jeq/image/upload/v1747092913/9a90fb7f-af44-4311-b343-bf1c2cacc6a7_eovhup.jpg",
+      "https://res.cloudinary.com/dvtxa7jeq/image/upload/v1747092913/9a4a424e-c95f-4719-bd17-7f523d646050_x6rmr0.jpg",
+      "https://res.cloudinary.com/dvtxa7jeq/image/upload/v1747092913/90ab74e8-042e-4921-8135-2baed9f64b13_yuzaao.jpg",
+      "https://res.cloudinary.com/dvtxa7jeq/image/upload/v1747092913/1df27958-2570-428d-8ad8-63218791358c_iuz8sd.jpg",
+      "https://res.cloudinary.com/dvtxa7jeq/image/upload/v1747092912/74925bc9-6c0b-4b88-9bc9-2583676c849b_yrx496.jpg",
+      "https://res.cloudinary.com/dvtxa7jeq/image/upload/v1747092912/50119894-591f-4ce4-8121-8ed845dd2064_xfuoum.jpg",
+      "https://res.cloudinary.com/dvtxa7jeq/image/upload/v1747092912/WoWScrnShot_041725_204600_loaky4.jpg",
+      "https://res.cloudinary.com/dvtxa7jeq/image/upload/v1747092912/WoWScrnShot_010424_200648_lt2j1s.jpg",
+      "https://res.cloudinary.com/dvtxa7jeq/image/upload/v1747092912/WoWScrnShot_041725_204548_cyur5k.jpg",
+      "https://res.cloudinary.com/dvtxa7jeq/image/upload/v1747092912/WoWScrnShot_010424_200702_omlqyx.jpg"
+    ];
+
+    const gallery = document.getElementById("gallery");
+
+    imagenes.forEach(url => {
+      const col = document.createElement("div");
+      col.className = "col-sm-6 col-md-4";
+      col.innerHTML = `<img src="${url}" alt="">`;
+      gallery.appendChild(col);
+    });
+  </script>
+
 </body>
 </html>
