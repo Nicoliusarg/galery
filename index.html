@@ -87,6 +87,31 @@
       height: auto;
       display: block;
     }
+
+    /* Lightbox fix: fondo + botón cerrar visible y savage style */
+    .lightboxOverlay {
+      background: rgba(0, 0, 0, 0.95) !important;
+    }
+
+    .lb-close {
+      background-color: #5e3c22 !important;
+      color: white !important;
+      font-size: 28px !important;
+      right: 10px !important;
+      top: 10px !important;
+      z-index: 9999 !important;
+      border-radius: 50%;
+      width: 38px;
+      height: 38px;
+      line-height: 36px;
+      text-align: center;
+      box-shadow: 0 0 10px #000;
+      opacity: 1 !important;
+    }
+
+    .lb-close:hover {
+      background-color: #7b4a28 !important;
+    }
   </style>
 </head>
 <body>
@@ -99,11 +124,13 @@
     <a href="https://www.savageoficial.com" class="btn-home">🏠 Home</a>
   </div>
 
+  <!-- Progreso Raider.IO -->
   <div class="progress-badge">
     <iframe src="https://raider.io/widgets/boss-progress?raid=latest&name_style=logo&difficulty=latest&region=us&realm=drakkari&guild=Savage&boss=latest&period=until_kill&orientation=horizontal&hide=num_pulls&chromargb=transparent&theme=dragonflight"
             width="100%" height="100" frameborder="0"></iframe>
   </div>
 
+  <!-- Galería -->
   <div class="gallery" id="gallery"></div>
 
   <!-- Scripts -->
@@ -133,7 +160,7 @@
       gallery.appendChild(a);
     });
 
-    // Partículas Savage
+    // Partículas estilo Savage
     tsParticles.load("particles-js", {
       particles: {
         number: { value: 25 },
@@ -143,18 +170,11 @@
           character: {
             value: ["ᚠ", "ᚢ", "ᚦ", "ᚨ", "ᛗ", "ᛉ", "ᛟ"],
             font: "Verdana",
-            style: "",
-            weight: "400",
             fill: true
           }
         },
-        size: {
-          value: 10,
-          random: true
-        },
-        opacity: {
-          value: 0.4
-        },
+        size: { value: 10, random: true },
+        opacity: { value: 0.4 },
         move: {
           enable: true,
           speed: 0.8,
@@ -163,17 +183,12 @@
         },
         rotate: {
           value: { min: 0, max: 360 },
-          animation: {
-            enable: true,
-            speed: 3,
-            sync: false
-          }
+          animation: { enable: true, speed: 3, sync: false }
         }
       },
       interactivity: {
         events: {
-          onHover: { enable: true, mode: "trail" },
-          onClick: { enable: false }
+          onHover: { enable: true, mode: "trail" }
         },
         modes: {
           trail: {
