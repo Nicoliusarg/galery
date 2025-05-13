@@ -87,31 +87,6 @@
       height: auto;
       display: block;
     }
-
-    /* Lightbox fix: fondo + botón cerrar visible y savage style */
-    .lightboxOverlay {
-      background: rgba(0, 0, 0, 0.95) !important;
-    }
-
-    .lb-close {
-      background-color: #5e3c22 !important;
-      color: white !important;
-      font-size: 28px !important;
-      right: 10px !important;
-      top: 10px !important;
-      z-index: 9999 !important;
-      border-radius: 50%;
-      width: 38px;
-      height: 38px;
-      line-height: 36px;
-      text-align: center;
-      box-shadow: 0 0 10px #000;
-      opacity: 1 !important;
-    }
-
-    .lb-close:hover {
-      background-color: #7b4a28 !important;
-    }
   </style>
 </head>
 <body>
@@ -124,13 +99,11 @@
     <a href="https://www.savageoficial.com" class="btn-home">🏠 Home</a>
   </div>
 
-  <!-- Progreso Raider.IO -->
   <div class="progress-badge">
     <iframe src="https://raider.io/widgets/boss-progress?raid=latest&name_style=logo&difficulty=latest&region=us&realm=drakkari&guild=Savage&boss=latest&period=until_kill&orientation=horizontal&hide=num_pulls&chromargb=transparent&theme=dragonflight"
             width="100%" height="100" frameborder="0"></iframe>
   </div>
 
-  <!-- Galería -->
   <div class="gallery" id="gallery"></div>
 
   <!-- Scripts -->
@@ -160,7 +133,55 @@
       gallery.appendChild(a);
     });
 
-    // Partículas estilo Savage
+    // Forzar cierre visible si Lightbox falla
+    const styleFix = document.createElement('style');
+    styleFix.innerHTML = `
+      .lb-close {
+        position: fixed !important;
+        top: 20px !important;
+        right: 30px !important;
+        background-color: #5e3c22 !important;
+        color: #fff !important;
+        font-size: 30px !important;
+        font-family: sans-serif;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        line-height: 40px;
+        text-align: center;
+        z-index: 99999 !important;
+        cursor: pointer;
+        box-shadow: 0 0 10px #000;
+        opacity: 1 !important;
+      }
+      .lb-close:hover {
+        background-color: #7b4a28 !important;
+      }
+    `;
+    document.head.appendChild(styleFix);
+
+    document.body.addEventListener("click", function (e) {
+      if (e.target.matches('[data-lightbox]')) {
+        setTimeout(() => {
+          if (!document.querySelector('.lb-close')) {
+            const closeBtn = document.createElement("div");
+            closeBtn.className = "lb-close";
+            closeBtn.innerHTML = "✖";
+            closeBtn.onclick = () => {
+              const overlay = document.querySelector('.lightboxOverlay');
+              const container = document.querySelector('.lightbox');
+              if (overlay) overlay.style.display = 'none';
+              if (container) container.style.display = 'none';
+              document.body.classList.remove('lightbox-open');
+              closeBtn.remove();
+            };
+            document.body.appendChild(closeBtn);
+          }
+        }, 300);
+      }
+    });
+
+    // Partículas Savage
     tsParticles.load("particles-js", {
       particles: {
         number: { value: 25 },
